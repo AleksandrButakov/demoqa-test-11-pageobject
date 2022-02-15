@@ -108,8 +108,9 @@ public class RegistrationPage {
     }
 
 
-    public void checkForm(String value) {
+    public RegistrationPage checkForm(String value) {
         resultsTable.shouldHave(text(value));
+        return this;
     }
 
 }

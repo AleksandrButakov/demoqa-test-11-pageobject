@@ -6,10 +6,9 @@ import pages.RegistrationPage;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class firstTestPageObject {
+public class FirstTestPageObject {
 
     RegistrationPage registrationPage = new RegistrationPage();
-
     String
             firstName = "Ivan",
             lastName = "Petrov",
@@ -41,6 +40,7 @@ public class firstTestPageObject {
 
     @Test
     void successPracticeFormTest() {
+        // data entry
         registrationPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
@@ -57,13 +57,19 @@ public class firstTestPageObject {
                 .submtButtonClick();
 
         // checking the correctness of the entered value
-        String[] myDataArray = {firstName, lastName, userEmail, gender, userNumber,
-                birthDataResult, subjects, hobbies, downloadPicture, currentAddress,
-                selectionState, selectionCity};
-        for (int index = 0; index < myDataArray.length; index++) {
-            registrationPage.checkForm(myDataArray[index]);
-            System.out.println("Checking the value: " + myDataArray[index]);
-        }
+        registrationPage
+                .checkForm(firstName)
+                .checkForm(lastName)
+                .checkForm(userEmail)
+                .checkForm(gender)
+                .checkForm(userNumber)
+                .checkForm(birthDataResult)
+                .checkForm(subjects)
+                .checkForm(hobbies)
+                .checkForm(downloadPicture)
+                .checkForm(currentAddress)
+                .checkForm(selectionState)
+                .checkForm(selectionCity);
     }
 
 }
